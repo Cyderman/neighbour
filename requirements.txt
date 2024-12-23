@@ -3,5 +3,5 @@ setuptools>=65.5.0
 pandas==1.5.3
 numpy>=1.23.5
 scikit-learn
-Pillow==9.5.0
 streamlit==1.30.0
+pillow==9.4.0
