@@ -4,5 +4,4 @@ pandas>=2.1.0
 numpy>=1.23.5
 scikit-learn
 streamlit==1.30.0
-pillow<10 --only-binary=:all:
-
+pillow>=10.0,<10.3
