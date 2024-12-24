@@ -26,7 +26,15 @@ def load_processed_data():
     combined_embeddings = pd.read_pickle("combined_embeddings.pkl").values
     known_embeddings = pd.read_pickle("known_embeddings.pkl").values
     pivot = pd.read_pickle("pivot.pkl")
-    horse_names = pd.read_csv("horse_names_autocomplete.csv", header=None)[0].tolist()
+
+    # Ensure all entries in horse_names are strings and filter out invalid entries
+    horse_names = (
+        pd.read_csv("horse_names_autocomplete.csv", header=None, skip_blank_lines=True)
+        .dropna()
+        .iloc[:, 0]
+        .astype(str)
+        .tolist()
+    )
 
     return data, combined_embeddings, known_embeddings, pivot, horse_names
 
