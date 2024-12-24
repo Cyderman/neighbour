@@ -1,8 +1,7 @@
 pip>=24.3.1
 setuptools>=65.5.0
-pandas==1.5.3
+pandas>=2.1.0
 numpy>=1.23.5
 scikit-learn
---only-binary=:all:
 streamlit==1.30.0
 pillow==9.4.0
