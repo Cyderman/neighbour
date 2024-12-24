@@ -28,7 +28,6 @@ def load_processed_data():
 
     return data, combined_embeddings, known_embeddings, pivot, horse_names
 
-
 def calculate_similarity(option, active_vector, embeddings, additional_features=None):
     if option == "Euclidean Distance":
         # Compute Euclidean distances
@@ -48,7 +47,6 @@ def calculate_similarity(option, active_vector, embeddings, additional_features=
             st.warning("Jaccard Similarity requires binary features. Falling back to Euclidean Distance.")
             return np.linalg.norm(embeddings - active_vector, axis=1)
 
-
 def main():
     st.title("Horse Matching App")
 
@@ -60,8 +58,8 @@ def main():
         st.stop()
 
     # Normalize case for pivot.index and data.index
-    pivot.index = pivot.index.str.lower()
-    data.index = data.index.str.lower()
+    pivot.index = pivot.index.astype(str).str.lower()  # Ensure all values are strings
+    data.index = data.index.astype(str).str.lower()    # Ensure all values are strings
     horse_names = [name.lower() for name in horse_names if isinstance(name, str)]
 
     # Horse name input with autocomplete
@@ -131,7 +129,6 @@ def main():
         st.write(f"- Heart: {match_data.get('heart', 'N/A')}")
         st.write(f"- Temper: {match_data.get('temper', 'N/A')}")
         st.write(f"- [View Horse Profile](URL/{match_name})")  # Replace `URL` with the actual URL prefix
-
 
 if __name__ == "__main__":
     main()
